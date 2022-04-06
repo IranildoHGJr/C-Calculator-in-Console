@@ -2,19 +2,23 @@
 
 namespace Calculator // Note: actual namespace depends on the project name.
 {
+  public static class UserName
+  {
+    public static string nameUser;
+  }
   internal class Program
   {
     static void Main(string[] args)
     {
+      Console.WriteLine("Olá, usuario, digite Seu Nome, por favor:");
+      UserName.nameUser = Console.ReadLine();
       Menu();
     }
 
     static void Menu()
     {
       Console.Clear();
-      Console.WriteLine("Olá, usuario, digite Seu Nome, por favor:");
-      string nameUser = Console.ReadLine();
-      Console.WriteLine("Qual das operações abaixo deseja fazer, " + nameUser + "?");
+      Console.WriteLine("Qual das operações abaixo deseja fazer, " + UserName.nameUser + "?");
       Console.WriteLine("1 - Soma");
       Console.WriteLine("2 - Subtração");
       Console.WriteLine("3 - Divisão");
@@ -32,7 +36,7 @@ namespace Calculator // Note: actual namespace depends on the project name.
         case 2: Subtracao(); break;
         case 3: Divisao(); break;
         case 4: Multiplicacao(); break;
-        case 5: Sair(nameUser); break;
+        case 5: Sair(); break;
         default: Menu(); break;
       }
     }
@@ -110,9 +114,9 @@ namespace Calculator // Note: actual namespace depends on the project name.
       Menu();
     }
 
-    static void Sair(string nameUser)
+    static void Sair()
     {
-      Console.WriteLine("Obrigado, " + nameUser + ", por usar nosso Sistema!:3³");
+      Console.WriteLine("Obrigado, " + UserName.nameUser + ", por usar nosso Sistema!:3³");
       Console.ReadKey();
       System.Environment.Exit(0);
     }
